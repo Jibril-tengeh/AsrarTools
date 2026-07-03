@@ -28,7 +28,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
-        java-version: '17'
+        java-version: '21'
 
     - name: Capacitor Add/Sync
       run: |
@@ -37,7 +37,9 @@ jobs:
     - name: Build APK
       run: |
         cd android
-        gradle wrapper --gradle-version 8.2.1
+        # Download gradle-wrapper.jar because it might be corrupt/missing
+        mkdir -p gradle/wrapper
+        curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
         chmod +x gradlew
         ./gradlew assembleDebug
 
