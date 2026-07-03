@@ -41,6 +41,8 @@ jobs:
       - name: Build APK
         run: |
           cd android
+          rm -f gradle/wrapper/gradle-wrapper.jar
+          gradle wrapper
           chmod +x gradlew
           ./gradlew assembleDebug
 
