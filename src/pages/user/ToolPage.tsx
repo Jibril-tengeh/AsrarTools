@@ -239,10 +239,10 @@ export function ToolPage() {
           <ChevronLeft className="w-6 h-6" />
         </button>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-[21px] font-bold text-gray-900 dark:text-white">
             {t(tool.nameKey)}
           </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-[11px] text-gray-600 dark:text-gray-400">
             {t(tool.descriptionKey)}
           </p>
         </div>

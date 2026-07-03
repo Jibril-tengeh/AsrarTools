@@ -128,7 +128,7 @@ function CategoryCard({ category, onClick, toolsCount }: { key?: string | number
       <div className="flex w-full items-center gap-4">
         {/* Icon container */}
         <div className="shrink-0 flex flex-col items-center">
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-amber-100/50 dark:bg-amber-900/20 flex items-center justify-center border border-amber-200/50 dark:border-amber-800/50 transition-transform duration-300 group-hover:scale-110">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-amber-100/50 dark:bg-amber-900/20 flex items-center justify-center border border-amber-200/50 dark:border-amber-800/50 transition-transform duration-300 group-hover:animate-zoom-in-out">
             <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-amber-600 dark:text-amber-400 stroke-[1.5]" />
           </div>
           <span className="mt-2 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 text-[10px] font-bold text-center leading-none">
@@ -139,7 +139,7 @@ function CategoryCard({ category, onClick, toolsCount }: { key?: string | number
         {/* Content */}
         <div className="flex-1 min-w-0 flex flex-col justify-center pl-2">
           <div className="flex items-center gap-2">
-            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight">
+            <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white leading-tight">
               {t(category.nameKey)}
             </h3>
           </div>
@@ -190,11 +190,11 @@ function ToolCard({ tool }: { key?: string | number; tool: AsrarTool }) {
         <div className={cn(
           "shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center border transition-all duration-300",
           isActive 
-            ? "bg-amber-50 dark:bg-amber-900/20 border-amber-200/60 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 group-hover:scale-110" 
+            ? "bg-amber-50 dark:bg-amber-900/20 border-amber-200/60 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 group-hover:animate-zoom-in-out" 
             : "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-500"
         )}>
           {/* Zoom animation is applied specifically to the active icons */}
-          <Icon className={cn("w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5]", isActive && "animate-zoom-in-out")} />
+          <Icon className={cn("w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5]")} />
         </div>
 
         {/* Content */}
