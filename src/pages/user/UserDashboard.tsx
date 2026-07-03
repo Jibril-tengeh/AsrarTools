@@ -94,7 +94,7 @@ export function UserDashboard() {
           // VIEW 3: Search Results Grouped by Category
           toolsByCategory.map((category) => (
             <div key={category.id} className="flex flex-col gap-3 sm:gap-4">
-              <h2 className="text-lg font-bold text-amber-800 dark:text-amber-400 border-b border-amber-100 dark:border-amber-900/50 pb-2">
+              <h2 className="text-base sm:text-lg font-bold text-amber-800 dark:text-amber-400 border-b border-amber-100 dark:border-amber-900/50 pb-2">
                 {t(category.nameKey)}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -139,11 +139,11 @@ function CategoryCard({ category, onClick, toolsCount }: { key?: string | number
         {/* Content */}
         <div className="flex-1 min-w-0 flex flex-col justify-center pl-2">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight">
               {t(category.nameKey)}
             </h3>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
             {t(category.descriptionKey)}
           </p>
         </div>
@@ -199,10 +199,10 @@ function ToolCard({ tool }: { key?: string | number; tool: AsrarTool }) {
 
         {/* Content */}
         <div className="flex-1 min-w-0 flex flex-col justify-center">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white truncate">
+          <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-white leading-tight line-clamp-2">
             {t(tool.nameKey)}
           </h3>
-          <p className="text-sm text-amber-800/80 dark:text-amber-200/70 truncate mt-0.5" dir="auto">
+          <p className="text-xs sm:text-sm text-amber-800/80 dark:text-amber-200/70 line-clamp-2 mt-0.5" dir="auto">
             {t(tool.descriptionKey)}
           </p>
         </div>

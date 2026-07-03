@@ -18,17 +18,17 @@ const rawCategories = [
 
 const catFR = {
   "CatAbjad": "Calculs de l'Abjad et Gematria", "CatAbjadDesc": "Conversion des lettres en valeurs numériques, incluant l'Abjad Kabir, Saghir et avancé.",
-  "CatWafq": "Carrés Magiques et Tracés (Awfaq)", "CatWafqDesc": "Création et gestion des grilles magiques comme le Muthallath et le Murabba'a.",
-  "CatAstrology": "Astrologie Traditionnelle et Horologie (Falak)", "CatAstrologyDesc": "Heures planétaires, phases lunaires, et analyse des 4 éléments.",
-  "CatTabai": "Analyse Élémentaire et Tempéraments (Taba'i)", "CatTabaiDesc": "Tempéraments, équilibre des 4 éléments et compatibilité.",
-  "CatHuruf": "Science des Lettres et Décompositions (Ilm al-Huruf)", "CatHurufDesc": "Décompositions (Bast), étalement et sceaux de lettres.",
-  "CatRituals": "Calculs de Rituels (Awrad et Dhikr)", "CatRitualsDesc": "Compteurs intelligents et planificateurs pour le Dhikr et les prières.",
+  "CatWafq": "Carrés Magiques et Tracés", "CatWafqDesc": "Création et gestion des grilles magiques comme le Muthallath et le Murabba'a.",
+  "CatAstrology": "Astrologie Traditionnelle et Horologie", "CatAstrologyDesc": "Heures planétaires, phases lunaires, et analyse des 4 éléments.",
+  "CatTabai": "Analyse Élémentaire et Tempéraments", "CatTabaiDesc": "Tempéraments, équilibre des 4 éléments et compatibilité.",
+  "CatHuruf": "Science des Lettres et Décompositions", "CatHurufDesc": "Décompositions (Bast), étalement et sceaux de lettres.",
+  "CatRituals": "Calculs de Rituels", "CatRitualsDesc": "Compteurs intelligents et planificateurs pour le Dhikr et les prières.",
   "CatDiag": "Diagnostic, Spiritualité et Protection", "CatDiagDesc": "Modulo, influences, subsistance et calendriers sacrés.",
-  "CatJafr": "La Science du Jafr et de la Zairja (Calculs Divinatoires)", "CatJafrDesc": "Méthode de calcul hautement technique pour extraire des réponses et des prévisions.",
-  "CatGeomancy2": "La Géomancie Traditionnelle (Khatt al-Raml)", "CatGeomancy2Desc": "Analyse basée sur la génération de figures composées de points et de traits.",
-  "CatMaterials": "Science des Supports et des Encres (Al-Alwah wa al-Ahbar)", "CatMaterialsDesc": "Choix des matériaux physiques (métaux, encres, parfums) déterminés par des calculs.",
-  "CatIstikharah": "Méthodes d'Istikharah (Consultation Spirituelle)", "CatIstikharahDesc": "Istikharah numérique utilisant le calcul pour obtenir une orientation.",
-  "CatAngelic": "Les Lettres Angéliques et Styles d'Écriture Anciens (Khatt al-Tilasim)", "CatAngelicDesc": "Alphabets cryptés ou sacrés pour la rédaction de formules de protection.",
+  "CatJafr": "La Science du Jafr et de la Zairja", "CatJafrDesc": "Méthode de calcul hautement technique pour extraire des réponses et des prévisions.",
+  "CatGeomancy2": "La Géomancie Traditionnelle", "CatGeomancy2Desc": "Analyse basée sur la génération de figures composées de points et de traits.",
+  "CatMaterials": "Science des Supports et des Encres", "CatMaterialsDesc": "Choix des matériaux physiques (métaux, encres, parfums) déterminés par des calculs.",
+  "CatIstikharah": "Méthodes d'Istikharah", "CatIstikharahDesc": "Istikharah numérique utilisant le calcul pour obtenir une orientation.",
+  "CatAngelic": "Les Lettres Angéliques et Styles d'Écriture Anciens", "CatAngelicDesc": "Alphabets cryptés ou sacrés pour la rédaction de formules de protection.",
   "CatCycles": "Cycles Temporels Individuels et Vulnérabilité", "CatCyclesDesc": "Calculs des variations énergétiques d'un individu sur l'année."
 };
 
@@ -136,11 +136,11 @@ const rawTools = [
   { id: 'diag-elemental-dysfunction', cat: 'cat-diag', icon: 'Flame', fr: ['Analyseur de Dysfonctionnement Élémentaire', 'Identifie l\'élément biologique perturbé (Modulo 4).'] },
   { id: 'diag-suhuf', cat: 'cat-diag', icon: 'FileText', fr: ['Générateur de Recommandation d\'Écritures (Suhuf)', 'Portions de textes à écrire sur papier ou argile.'] },
   { id: 'diag-temporal', cat: 'cat-diag', icon: 'Clock', fr: ['Détecteur d\'Influences Temporelles', 'Coïncidence des troubles avec transits/heures d\'affliction.'] },
-  { id: 'diag-fengshui', cat: 'cat-diag', icon: 'Compass', fr: ['Calculateur d\'Orientation Spatiale (Feng Shui Traditionnel / Jihat)', 'Direction cardinale idéale pour la prière ou méditation.'] },
+  { id: 'diag-fengshui', cat: 'cat-diag', icon: 'Compass', fr: ['Calculateur d\'Orientation Spatiale (Feng Shui / Jihat)', 'Direction cardinale idéale pour la prière ou méditation.'] },
   { id: 'diag-rizq', cat: 'cat-diag', icon: 'Briefcase', fr: ['Calculateur de Rizq (Subsistance) Commerciale', 'Mesure le potentiel d\'attraction commerciale d\'un projet.'] },
   { id: 'diag-dreams', cat: 'cat-diag', icon: 'CloudMoon', fr: ['Décodeur de Rêves par l\'Abjad', 'Associe les mots clés du rêve à une catégorie d\'interprétation.'] },
   { id: 'diag-night-third', cat: 'cat-diag', icon: 'Moon', fr: ['Calculateur du Tiers de la Nuit', 'Heure exacte du début du dernier tiers de la nuit.'] },
-  { id: 'diag-property-harmony', cat: 'cat-diag', icon: 'Home', fr: ['Calculateur d\'Harmonie de Biens (Achat Immobilier/Véhicule)', 'Harmonie vibratoire avec adresse ou immatriculation.'] },
+  { id: 'diag-property-harmony', cat: 'cat-diag', icon: 'Home', fr: ['Calculateur d\'Harmonie de Biens', 'Harmonie vibratoire avec adresse ou immatriculation.'] },
   { id: 'diag-seasonal', cat: 'cat-diag', icon: 'CloudRain', fr: ['Calculateur d\'Impact Saisonnier', 'Effet des saisons sur le tempérament élémentaire.'] },
   { id: 'diag-hijama', cat: 'cat-diag', icon: 'Droplet', fr: ['Calendrier de Hijama', 'Indique les jours optimaux du mois lunaire pour la saignée.'] },
   { id: 'diag-bukhoor', cat: 'cat-diag', icon: 'Wind', fr: ['Guide d\'Utilisation des Encens (Bukhoor)', 'Recommande l\'encens selon la planète de l\'heure.'] },
@@ -217,17 +217,17 @@ for (let key in catFR) {
   enTranslations[key] = catFR[key]; // Copying for now
 }
 enTranslations["CatAbjad"] = "Abjad Calculations & Gematria";
-enTranslations["CatWafq"] = "Magic Squares & Traces (Awfaq)";
-enTranslations["CatAstrology"] = "Traditional Astrology & Horology (Falak)";
-enTranslations["CatTabai"] = "Elemental Analysis & Temperaments (Taba'i)";
-enTranslations["CatHuruf"] = "Science of Letters & Decompositions (Ilm al-Huruf)";
-enTranslations["CatRituals"] = "Ritual Calculations (Awrad & Dhikr)";
+enTranslations["CatWafq"] = "Magic Squares & Traces";
+enTranslations["CatAstrology"] = "Traditional Astrology & Horology";
+enTranslations["CatTabai"] = "Elemental Analysis & Temperaments";
+enTranslations["CatHuruf"] = "Science of Letters & Decompositions";
+enTranslations["CatRituals"] = "Ritual Calculations";
 enTranslations["CatDiag"] = "Diagnosis, Spirituality & Protection";
-enTranslations["CatJafr"] = "The Science of Jafr and Zairja (Divinatory Calculations)";
-enTranslations["CatGeomancy2"] = "Traditional Geomancy (Khatt al-Raml)";
-enTranslations["CatMaterials"] = "Science of Materials and Inks (Al-Alwah wa al-Ahbar)";
-enTranslations["CatIstikharah"] = "Methods of Istikharah (Spiritual Consultation)";
-enTranslations["CatAngelic"] = "Angelic Letters and Ancient Writing Styles (Khatt al-Tilasim)";
+enTranslations["CatJafr"] = "The Science of Jafr and Zairja";
+enTranslations["CatGeomancy2"] = "Traditional Geomancy";
+enTranslations["CatMaterials"] = "Science of Materials and Inks";
+enTranslations["CatIstikharah"] = "Methods of Istikharah";
+enTranslations["CatAngelic"] = "Angelic Letters and Ancient Writing Styles";
 enTranslations["CatCycles"] = "Individual Time Cycles and Vulnerability";
 
 rawTools.forEach(t => {
