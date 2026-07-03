@@ -2,6 +2,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --animate-zoom-in-out: zoomInOut 2.5s ease-in-out infinite;
+
+  @keyframes zoomInOut {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -12,20 +12,55 @@ const resources = {
       "Language": "Langue",
       "Tools": "Outils",
       "Settings": "Paramètres",
-      "UserDashboardTitle": "Tableau de bord Utilisateur",
+      "UserDashboardTitle": "Annuaire des 325 Outils d'Asrar",
       "SearchTools": "Rechercher un outil...",
       "StatusActive": "Actif",
       "StatusMaintenance": "En maintenance",
-      "StatusDisabled": "Désactivé",
+      "StatusDisabled": "Premium / À venir",
       "AccessTool": "Accéder",
-      "KhatimGenName": "Générateur de Khatim",
-      "KhatimGenDesc": "Générer des carrés magiques (Khatim) pour vos besoins spirituels.",
-      "ZikrCounterName": "Compteur de Zikr",
-      "ZikrCounterDesc": "Un outil numérique pour compter vos récitations de Zikr.",
-      "AbjadCalcName": "Calculatrice Abjad",
-      "AbjadCalcDesc": "Calculez la valeur numérique des mots et des phrases selon l'alphabet Abjad.",
-      "TalsamBuilderName": "Créateur de Talsam",
-      "TalsamBuilderDesc": "Outil avancé pour concevoir et structurer des Talsams."
+      
+      // Categories
+      "CatAbjad": "I. Calculs de l'Abjad et Gematria",
+      "CatWafq": "II. Carrés Magiques et Tracés (Awfaq)",
+      "CatAstrology": "III. Astrologie Traditionnelle",
+      "CatRituals": "IV. Calculs de Rituels (Awrad & Dhikr)",
+      "CatGeomancy": "V. Géomancie (Raml)",
+
+      // Tools
+      "AbjadKabirName": "Abjad Kabir (Standard)",
+      "AbjadKabirDesc": "Table standard de conversion de l'alphabet arabe (valeurs de 1 à 1000) avec analyse détaillée.",
+      "AbjadSaghirName": "Abjad Saghir",
+      "AbjadSaghirDesc": "Réduction par modulo 9 ou 12 pour des signatures arithmétiques courtes.",
+      
+      "Wafq3x3Name": "Wafq Muthallath (3x3)",
+      "Wafq3x3Desc": "Générateur profond de grille magique de 9 cases (Al-Ghazali) calculée d'après un nombre cible entré.",
+      "Wafq4x4Name": "Wafq Murabba'a (4x4)",
+      "Wafq4x4Desc": "Grille de 16 cases gérant les progressions arithmétiques harmonisées.",
+
+      "ZikrCounterName": "Compteur Intelligent (Dhikr)",
+      "ZikrCounterDesc": "Chapelet virtuel vibrant et alertant avec cible numérique et haptique.",
+      "DhikrPlannerName": "Planificateur de Dhikr",
+      "DhikrPlannerDesc": "Détermine le nombre de répétitions optimales d'après l'Abjad d'un nom.",
+
+      // UI Texts for Tools
+      "ArabicText": "Texte en Arabe (الكلمة أو الجملة)",
+      "Clear": "Effacer",
+      "TotalAbjadValue": "Valeur Abjad Totale",
+      "DetailedAnalysis": "Analyse Détaillée (تفصيل الحروف)",
+      "TargetNumber": "Nombre cible (العدد المطلوب)",
+      "TargetPlaceholder": "Cible...",
+      "WafqMinWarn": "La valeur minimum pour un Wafq 3x3 classique est de 15.",
+      "Base": "Miftah (Base)",
+      "Remainder": "Kasr (Reste)",
+      "AddedToRank": "(ajouté au rang 7)",
+      "Sum": "Somme",
+      "EnterTargetWafq": "Entrez un nombre cible pour générer le Wafq.",
+      "ResetConfirm": "Voulez-vous réinitialiser le compteur ?",
+      "TargetReached": "Cible atteinte ! (الهدف مكتمل)",
+      "NotFoundTitle": "Outil non trouvé",
+      "BackToDashboard": "Retour au tableau de bord",
+      "InDevelopmentTitle": "Outil en cours de développement",
+      "InDevelopmentDesc": "L'outil {{name}} est actuellement en cours de finalisation."
     }
   },
   en: {
@@ -38,20 +73,53 @@ const resources = {
       "Language": "Language",
       "Tools": "Tools",
       "Settings": "Settings",
-      "UserDashboardTitle": "User Dashboard",
+      "UserDashboardTitle": "Directory of 325 Asrar Tools",
       "SearchTools": "Search for a tool...",
       "StatusActive": "Active",
       "StatusMaintenance": "Maintenance",
-      "StatusDisabled": "Disabled",
+      "StatusDisabled": "Premium / Coming Soon",
       "AccessTool": "Access",
-      "KhatimGenName": "Khatim Generator",
-      "KhatimGenDesc": "Generate magic squares (Khatim) for your spiritual needs.",
-      "ZikrCounterName": "Zikr Counter",
-      "ZikrCounterDesc": "A digital tool to count your Zikr recitations.",
-      "AbjadCalcName": "Abjad Calculator",
-      "AbjadCalcDesc": "Calculate the numerical value of words and phrases according to the Abjad alphabet.",
-      "TalsamBuilderName": "Talsam Builder",
-      "TalsamBuilderDesc": "Advanced tool for designing and structuring Talsams."
+      
+      "CatAbjad": "I. Abjad Calculations & Gematria",
+      "CatWafq": "II. Magic Squares & Traces (Awfaq)",
+      "CatAstrology": "III. Traditional Astrology",
+      "CatRituals": "IV. Ritual Calculations (Awrad & Dhikr)",
+      "CatGeomancy": "V. Geomancy (Raml)",
+
+      "AbjadKabirName": "Abjad Kabir (Standard)",
+      "AbjadKabirDesc": "Standard Arabic alphabet conversion table (values 1 to 1000) with detailed analysis.",
+      "AbjadSaghirName": "Abjad Saghir",
+      "AbjadSaghirDesc": "Reduction by modulo 9 or 12 for short arithmetic signatures.",
+      
+      "Wafq3x3Name": "Wafq Muthallath (3x3)",
+      "Wafq3x3Desc": "Deep generator for a 9-cell magic square calculated from a target number.",
+      "Wafq4x4Name": "Wafq Murabba'a (4x4)",
+      "Wafq4x4Desc": "16-cell grid managing harmonized arithmetic progressions.",
+
+      "ZikrCounterName": "Smart Counter (Dhikr)",
+      "ZikrCounterDesc": "Virtual vibrating rosary alerting at target number with haptics.",
+      "DhikrPlannerName": "Dhikr Planner",
+      "DhikrPlannerDesc": "Determines optimal repetitions based on a name's Abjad.",
+
+      // UI Texts for Tools
+      "ArabicText": "Arabic Text (الكلمة أو الجملة)",
+      "Clear": "Clear",
+      "TotalAbjadValue": "Total Abjad Value",
+      "DetailedAnalysis": "Detailed Analysis (تفصيل الحروف)",
+      "TargetNumber": "Target Number (العدد المطلوب)",
+      "TargetPlaceholder": "Target...",
+      "WafqMinWarn": "The minimum value for a classic 3x3 Wafq is 15.",
+      "Base": "Miftah (Base)",
+      "Remainder": "Kasr (Remainder)",
+      "AddedToRank": "(added to rank 7)",
+      "Sum": "Sum",
+      "EnterTargetWafq": "Enter a target number to generate the Wafq.",
+      "ResetConfirm": "Do you want to reset the counter?",
+      "TargetReached": "Target reached! (الهدف مكتمل)",
+      "NotFoundTitle": "Tool not found",
+      "BackToDashboard": "Back to dashboard",
+      "InDevelopmentTitle": "Tool in development",
+      "InDevelopmentDesc": "The tool {{name}} is currently being finalized."
     }
   },
   ha: {
@@ -64,20 +132,53 @@ const resources = {
       "Language": "Harshe",
       "Tools": "Kayan aiki",
       "Settings": "Saituna",
-      "UserDashboardTitle": "Allon Mai Amfani",
+      "UserDashboardTitle": "Kundin Kayan aikin Asrar guda 325",
       "SearchTools": "Nemi kayan aiki...",
       "StatusActive": "Yana Aiki",
       "StatusMaintenance": "Gyara",
-      "StatusDisabled": "An Kashe",
+      "StatusDisabled": "Premium / Nan Bada Jimawa Ba",
       "AccessTool": "Shiga",
-      "KhatimGenName": "Mai Kirkirar Khatim",
-      "KhatimGenDesc": "Kirkirar haruffan lissafi (Khatim) don bukatun ku na ruhaniya.",
+      
+      "CatAbjad": "I. Lissafin Abjad",
+      "CatWafq": "II. Hatimi (Awfaq)",
+      "CatAstrology": "III. Ilimin Taurari",
+      "CatRituals": "IV. Lissafin Zikiri",
+      "CatGeomancy": "V. Bugun Kasa (Raml)",
+
+      "AbjadKabirName": "Abjad Kabir (Babbar)",
+      "AbjadKabirDesc": "Teburin fassara haruffan Larabci na musamman (kimar daga 1 zuwa 1000).",
+      "AbjadSaghirName": "Abjad Saghir",
+      "AbjadSaghirDesc": "Rage lissafi zuwa kashi 9 ko 12 don kankanin lissafi.",
+      
+      "Wafq3x3Name": "Hatimin Gida 3 (3x3)",
+      "Wafq3x3Desc": "Mai kirkirar hatimin gida 9 daga wani adadi.",
+      "Wafq4x4Name": "Hatimin Gida 4 (4x4)",
+      "Wafq4x4Desc": "Hatimin gida 16 don daidaita lissafin ilimi.",
+
       "ZikrCounterName": "Injin Zikiri",
-      "ZikrCounterDesc": "Injin lissafin Zikiri na zamani.",
-      "AbjadCalcName": "Lissafin Abjad",
-      "AbjadCalcDesc": "Lissafin kimar lambobi na kalmomi da jimloli bisa ga haruffan Abjad.",
-      "TalsamBuilderName": "Mai Kirkirar Talsam",
-      "TalsamBuilderDesc": "Babban kayan aiki don tsara da kuma gina Talsam."
+      "ZikrCounterDesc": "Injin lissafin zikiri na zamani da ke girgizawa idan an kawo adadi.",
+      "DhikrPlannerName": "Tsarin Zikiri",
+      "DhikrPlannerDesc": "Gano adadin zikiri mafi kyau bisa ga sunan mutum.",
+
+      // UI Texts for Tools
+      "ArabicText": "Rubutun Larabci (الكلمة أو الجملة)",
+      "Clear": "Goge",
+      "TotalAbjadValue": "Jimillar Kimar Abjad",
+      "DetailedAnalysis": "Cikakken Bayani (تفصيل الحروف)",
+      "TargetNumber": "Adadin da ake bukata (العدد المطلوب)",
+      "TargetPlaceholder": "Adadi...",
+      "WafqMinWarn": "Mafi kankantar adadi na Hatimin gida 3 shine 15.",
+      "Base": "Miftah (Tushe)",
+      "Remainder": "Kasr (Rago)",
+      "AddedToRank": "(an kara a gida na 7)",
+      "Sum": "Jimilla",
+      "EnterTargetWafq": "Shigar da adadi don kirkirar Hatimi.",
+      "ResetConfirm": "Kuna son sake fara lissafin?",
+      "TargetReached": "An cimma adadin! (الهدف مكتمل)",
+      "NotFoundTitle": "Ba a samun wannan kayan aikin ba",
+      "BackToDashboard": "Komawa babban shafi",
+      "InDevelopmentTitle": "Kayan aikin na kan aiki",
+      "InDevelopmentDesc": "Ana kan kammala wannan kayan aikin {{name}} a yanzu."
     }
   },
   ar: {
@@ -90,20 +191,53 @@ const resources = {
       "Language": "اللغة",
       "Tools": "الأدوات",
       "Settings": "الإعدادات",
-      "UserDashboardTitle": "لوحة تحكم المستخدم",
+      "UserDashboardTitle": "دليل أدوات الأسرار الـ 325",
       "SearchTools": "ابحث عن أداة...",
       "StatusActive": "نشط",
       "StatusMaintenance": "صيانة",
-      "StatusDisabled": "معطل",
+      "StatusDisabled": "قريباً / مميز",
       "AccessTool": "دخول",
-      "KhatimGenName": "مولد الخاتم",
-      "KhatimGenDesc": "توليد المربعات السحرية (خاتم) لاحتياجاتك الروحية.",
-      "ZikrCounterName": "عداد الذكر",
-      "ZikrCounterDesc": "أداة رقمية لحساب تلاوات الذكر الخاصة بك.",
-      "AbjadCalcName": "حاسبة أبجد",
-      "AbjadCalcDesc": "احسب القيمة العددية للكلمات والعبارات وفقًا للأبجدية الأبجدية.",
-      "TalsamBuilderName": "منشئ الطلسم",
-      "TalsamBuilderDesc": "أداة متقدمة لتصميم وهيكلة الطلاسم."
+      
+      "CatAbjad": "١. حسابات الأبجد والجيمتريا",
+      "CatWafq": "٢. المربعات السحرية والأوفاق",
+      "CatAstrology": "٣. علم الفلك التقليدي",
+      "CatRituals": "٤. حسابات الأوراد والذكر",
+      "CatGeomancy": "٥. علم الرمل",
+
+      "AbjadKabirName": "أبجد الكبير",
+      "AbjadKabirDesc": "جدول تحويل الحروف العربية القياسي (قيم من 1 إلى 1000) مع تحليل مفصل.",
+      "AbjadSaghirName": "أبجد الصغير",
+      "AbjadSaghirDesc": "التخفيض باستخدام النسبة 9 أو 12 للتوقيعات الحسابية القصيرة.",
+      
+      "Wafq3x3Name": "وفق مثلث (3x3)",
+      "Wafq3x3Desc": "مولد عميق لشبكة سحرية من 9 مربعات (الغزالي) تحسب من رقم مستهدف.",
+      "Wafq4x4Name": "وفق مربع (4x4)",
+      "Wafq4x4Desc": "شبكة من 16 مربعاً تدير التقدم الحسابي المتناغم.",
+
+      "ZikrCounterName": "العداد الذكي (الذكر)",
+      "ZikrCounterDesc": "مسبحة افتراضية تهتز وتنبه عند الوصول للرقم المستهدف.",
+      "DhikrPlannerName": "مخطط الذكر",
+      "DhikrPlannerDesc": "تحديد عدد التكرارات المثلى بناءً على أبجد الاسم.",
+
+      // UI Texts for Tools
+      "ArabicText": "النص العربي (الكلمة أو الجملة)",
+      "Clear": "مسح",
+      "TotalAbjadValue": "مجموع الأبجد",
+      "DetailedAnalysis": "التحليل المفصل (تفصيل الحروف)",
+      "TargetNumber": "الرقم المطلوب (العدد المطلوب)",
+      "TargetPlaceholder": "الهدف...",
+      "WafqMinWarn": "الحد الأدنى لقيمة الوفق المثلث الكلاسيكي هو 15.",
+      "Base": "المفتاح (الأساس)",
+      "Remainder": "الكسر (الباقي)",
+      "AddedToRank": "(يُضاف في الخانة السابعة)",
+      "Sum": "المجموع",
+      "EnterTargetWafq": "أدخل الرقم المستهدف لإنشاء الوفق.",
+      "ResetConfirm": "هل تريد إعادة ضبط العداد؟",
+      "TargetReached": "تم الوصول للهدف! (الهدف مكتمل)",
+      "NotFoundTitle": "الأداة غير موجودة",
+      "BackToDashboard": "العودة للوحة التحكم",
+      "InDevelopmentTitle": "الأداة قيد التطوير",
+      "InDevelopmentDesc": "الأداة {{name}} قيد الإنجاز حالياً."
     }
   }
 };
@@ -112,11 +246,12 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: "fr", // Default language is French
+    lng: "fr",
     fallbackLng: "fr",
     interpolation: {
-      escapeValue: false // react already safes from xss
+      escapeValue: false
     }
   });
 
 export default i18n;
+
