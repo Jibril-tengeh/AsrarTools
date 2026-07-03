@@ -1,0 +1,5 @@
+package com.asrartools.app;
+
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {}

@@ -1,0 +1,6 @@
+{
+	"appId": "com.asrartools.app",
+	"appName": "Asrar Tools",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
