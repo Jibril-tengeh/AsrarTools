@@ -24,3 +24,9 @@ jobs:
       
     - name: Build App
       run: npm run build
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: asrartools-build
+        path: dist/

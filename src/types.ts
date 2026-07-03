@@ -12,4 +12,6 @@ export interface AsrarTool {
 export interface ToolCategory {
   id: string;
   nameKey: string;
+  descriptionKey: string;
+  iconName: string;
 }

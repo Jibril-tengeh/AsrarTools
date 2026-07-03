@@ -1,12 +1,12 @@
 import { AsrarTool, ToolCategory } from '../types';
 
 export const categories: ToolCategory[] = [
-  { id: 'cat-abjad', nameKey: 'CatAbjad' },
-  { id: 'cat-wafq', nameKey: 'CatWafq' },
-  { id: 'cat-astrology', nameKey: 'CatAstrology' },
-  { id: 'cat-asma', nameKey: 'CatAsma' },
-  { id: 'cat-rituals', nameKey: 'CatRituals' },
-  { id: 'cat-geomancy', nameKey: 'CatGeomancy' },
+  { id: 'cat-abjad', nameKey: 'CatAbjad', descriptionKey: 'CatAbjadDesc', iconName: 'Hash' },
+  { id: 'cat-wafq', nameKey: 'CatWafq', descriptionKey: 'CatWafqDesc', iconName: 'Grid3x3' },
+  { id: 'cat-astrology', nameKey: 'CatAstrology', descriptionKey: 'CatAstrologyDesc', iconName: 'Compass' },
+  { id: 'cat-asma', nameKey: 'CatAsma', descriptionKey: 'CatAsmaDesc', iconName: 'BookOpen' },
+  { id: 'cat-rituals', nameKey: 'CatRituals', descriptionKey: 'CatRitualsDesc', iconName: 'Activity' },
+  { id: 'cat-geomancy', nameKey: 'CatGeomancy', descriptionKey: 'CatGeomancyDesc', iconName: 'LayoutGrid' },
 ];
 
 export const mockTools: AsrarTool[] = [
