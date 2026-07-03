@@ -19,6 +19,7 @@ import { AngelicTool } from '../../components/tools/AngelicTool';
 import { MaterialsTool } from '../../components/tools/MaterialsTool';
 import { CyclesTool } from '../../components/tools/CyclesTool';
 import { DiagnosticHub } from '../../components/tools/DiagnosticHub';
+import { WafqHub } from '../../components/tools/WafqHub';
 
 // Fallback legacy imports
 import { DhikrPlanner } from '../../components/tools/DhikrPlanner';
@@ -175,7 +176,6 @@ export function ToolPage() {
         return <DiagnosticHub initialToolId={tool.id} />;
 
       
-      case 'wafq-10x10':
       case 'wafq-combined':
       case 'wafq-hollow':
       case 'wafq-literal':
@@ -183,10 +183,7 @@ export function ToolPage() {
       case 'wafq-rotation':
       case 'wafq-sun':
       case 'wafq-validator':
-      case 'wafq-4x4':
-      case 'wafq-6x6':
-      case 'wafq-8x8':
-        return <DiagnosticHub initialToolId={tool.id} />;
+        return <WafqHub initialToolId={tool.id} />;
 
 
       case 'jafr-miftah':
@@ -239,17 +236,17 @@ export function ToolPage() {
           <ChevronLeft className="w-6 h-6" />
         </button>
         <div>
-          <h1 className="text-[21px] font-bold text-gray-900 dark:text-white">
+          <h1 className="text-[18px] font-bold text-gray-900 dark:text-white">
             {t(tool.nameKey)}
           </h1>
-          <p className="text-[11px] text-gray-600 dark:text-gray-400">
+          <p className="text-[10px] text-gray-600 dark:text-gray-400">
             {t(tool.descriptionKey)}
           </p>
         </div>
       </div>
 
       {/* Tool Content Area */}
-      <div className="flex-1">
+      <div className="flex-1 text-[13px] [&_input]:text-[13px] [&_button]:text-[13px] [&_h2]:text-[15px] [&_h3]:text-[14px]">
         {renderToolContent()}
       </div>
     </div>

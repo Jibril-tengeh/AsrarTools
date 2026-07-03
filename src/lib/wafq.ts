@@ -1,61 +1,26 @@
 export function generateWafq(order: number, targetSum: number): number[][] | null {
-  // A simple implementation of the Siamese method for odd-order magic squares
-  // For even orders, we would need Doubly Even or Singly Even algorithms.
-  // We'll provide a basic implementation for odd numbers and a placeholder for evens.
-  
+  let matrix: number[][] = [];
   if (order % 2 !== 0) {
-    return generateOddMagicSquare(order, targetSum);
+    matrix = generateOddMagicSquare(order);
+  } else if (order % 4 === 0) {
+    matrix = generateDoublyEvenMagicSquare(order);
   } else {
-    // For even orders, it's more complex. We return a placeholder or standard matrix.
-    // In a full system, you would implement the Strachey method (singly even) 
-    // and the Spring method (doubly even).
-    return generateEvenPlaceholder(order, targetSum);
-  }
-}
-
-function generateOddMagicSquare(n: number, targetSum: number): number[][] {
-  const magicConstant = (n * (n * n + 1)) / 2;
-  const matrix: number[][] = Array(n).fill(null).map(() => Array(n).fill(0));
-  
-  let i = n / 2 | 0;
-  let j = n - 1;
-
-  for (let num = 1; num <= n * n; ) {
-    if (i === -1 && j === n) {
-      j = n - 2;
-      i = 0;
-    } else {
-      if (j === n) j = 0;
-      if (i < 0) i = n - 1;
-    }
-
-    if (matrix[i][j] !== 0) {
-      j -= 2;
-      i++;
-      continue;
-    } else {
-      matrix[i][j] = num++;
-    }
-
-    j++;
-    i--;
+    matrix = generateSinglyEvenMagicSquare(order);
   }
 
-  // Adjust to target sum if possible, normally Wafq distributes the remainder
-  // For standard spiritual Wafq, if sum is specified:
-  // We add an offset to each cell.
+  // Adjust to target sum if possible
   if (targetSum > 0) {
-    const minRequired = magicConstant;
-    if (targetSum >= minRequired) {
-      const diff = targetSum - minRequired;
-      const baseOffset = Math.floor(diff / n);
-      const remainder = diff % n;
+    const magicConstant = (order * (order * order + 1)) / 2;
+    if (targetSum >= magicConstant) {
+      const diff = targetSum - magicConstant;
+      const baseOffset = Math.floor(diff / order);
+      const remainder = diff % order;
       
-      for (let r = 0; r < n; r++) {
-        for (let c = 0; c < n; c++) {
+      for (let r = 0; r < order; r++) {
+        for (let c = 0; c < order; c++) {
           matrix[r][c] += baseOffset;
-          // Add remainder to specific cells based on advanced rules
-          if (matrix[r][c] > (n*n) - remainder) {
+          // Extremely basic remainder distribution (usually added to the highest value cells)
+          if (matrix[r][c] > (order * order) - remainder) {
              matrix[r][c] += 1;
           }
         }
@@ -66,8 +31,103 @@ function generateOddMagicSquare(n: number, targetSum: number): number[][] {
   return matrix;
 }
 
-function generateEvenPlaceholder(n: number, sum: number): number[][] {
-    const matrix: number[][] = Array(n).fill(null).map(() => Array(n).fill(0));
-    // Implementation for 4x4, 6x6, 8x8 goes here. Returning empty for now.
-    return matrix;
+function generateOddMagicSquare(n: number): number[][] {
+  const matrix: number[][] = Array(n).fill(null).map(() => Array(n).fill(0));
+  
+  let i = Math.floor(n / 2);
+  let j = n - 1;
+
+  for (let num = 1; num <= n * n; ) {
+    if (i === -1 && j === n) {
+      j = n - 2;
+      i = 0;
+    } else {
+      if (j === n) j = 0;
+      if (i < 0) i = n - 1;
+    }
+    if (matrix[i][j] !== 0) {
+      j -= 2;
+      i++;
+      continue;
+    } else {
+      matrix[i][j] = num++;
+    }
+    j++;
+    i--;
+  }
+
+  return matrix;
+}
+
+function generateDoublyEvenMagicSquare(n: number): number[][] {
+  const matrix: number[][] = Array(n).fill(null).map(() => Array(n).fill(0));
+  let i, j;
+
+  // fill array with their index-value
+  for (i = 0; i < n; i++)
+    for (j = 0; j < n; j++)
+      matrix[i][j] = (n * i) + j + 1;
+
+  // change value of Array elements at fix location as per rule
+  for (i = 0; i < n / 4; i++)
+    for (j = 0; j < n / 4; j++)
+      matrix[i][j] = (n * n + 1) - matrix[i][j];
+
+  for (i = 0; i < n / 4; i++)
+    for (j = 3 * (n / 4); j < n; j++)
+      matrix[i][j] = (n * n + 1) - matrix[i][j];
+
+  for (i = 3 * (n / 4); i < n; i++)
+    for (j = 0; j < n / 4; j++)
+      matrix[i][j] = (n * n + 1) - matrix[i][j];
+
+  for (i = 3 * (n / 4); i < n; i++)
+    for (j = 3 * (n / 4); j < n; j++)
+      matrix[i][j] = (n * n + 1) - matrix[i][j];
+
+  for (i = n / 4; i < 3 * (n / 4); i++)
+    for (j = n / 4; j < 3 * (n / 4); j++)
+      matrix[i][j] = (n * n + 1) - matrix[i][j];
+
+  return matrix;
+}
+
+function generateSinglyEvenMagicSquare(n: number): number[][] {
+  const matrix: number[][] = Array(n).fill(null).map(() => Array(n).fill(0));
+  const halfN = n / 2;
+  const subSquareSize = halfN * halfN;
+  const subSquare = generateOddMagicSquare(halfN);
+
+  for (let r = 0; r < halfN; r++) {
+    for (let c = 0; c < halfN; c++) {
+      matrix[r][c] = subSquare[r][c]; // Top-Left
+      matrix[r + halfN][c + halfN] = subSquare[r][c] + subSquareSize; // Bottom-Right
+      matrix[r][c + halfN] = subSquare[r][c] + 2 * subSquareSize; // Top-Right
+      matrix[r + halfN][c] = subSquare[r][c] + 3 * subSquareSize; // Bottom-Left
+    }
+  }
+
+  const k = (n - 2) / 4;
+
+  for (let r = 0; r < halfN; r++) {
+    for (let c = 0; c < k; c++) {
+      let cToSwap = c;
+      if (r === Math.floor(halfN / 2)) {
+        cToSwap = c + 1;
+      }
+      const temp = matrix[r][cToSwap];
+      matrix[r][cToSwap] = matrix[r + halfN][cToSwap];
+      matrix[r + halfN][cToSwap] = temp;
+    }
+  }
+
+  for (let c = n - k + 1; c < n; c++) {
+    for (let r = 0; r < halfN; r++) {
+      const temp = matrix[r][c];
+      matrix[r][c] = matrix[r + halfN][c];
+      matrix[r + halfN][c] = temp;
+    }
+  }
+
+  return matrix;
 }
