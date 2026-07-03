@@ -3,7 +3,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --animate-zoom-in-out: zoomInOut 2.5s ease-in-out infinite;
+  --color-obsidian-900: #0B0C10;
+  --color-obsidian-950: #050608;
+  --color-gold-400: #F3CA40;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #AA8C2C;
+
+  --animate-zoom-in-out: zoomInOut 3s ease-in-out infinite;
 
   @keyframes zoomInOut {
     0%, 100% {
@@ -17,12 +23,13 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 222.2 84% 4.9%;
   }
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Obsidian Black */
+    --background: 220 15% 5%;
+    --foreground: 46 65% 85%;
   }
 }
 

@@ -78,7 +78,7 @@ export function ZikrCounter() {
             className={cn(
               "p-2.5 rounded-xl transition-colors",
               hapticsEnabled 
-                ? "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400" 
+                ? "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400" 
                 : "bg-gray-100 dark:bg-gray-800 text-gray-400"
             )}
             title="Vibrations"
@@ -101,14 +101,14 @@ export function ZikrCounter() {
         className={cn(
           "relative w-full aspect-square flex flex-col items-center justify-center rounded-full border-8 transition-all active:scale-95 touch-manipulation select-none overflow-hidden",
           isCompleted
-            ? "bg-emerald-600 border-emerald-500 text-white shadow-xl shadow-emerald-600/20"
+            ? "bg-amber-600 border-amber-500 text-white shadow-xl shadow-amber-600/20"
             : "bg-white dark:bg-gray-950 border-gray-100 dark:border-gray-900 shadow-xl shadow-gray-200/50 dark:shadow-none"
         )}
       >
         {/* Progress Background */}
         {!isCompleted && typeof target === 'number' && target > 0 && (
           <div 
-            className="absolute bottom-0 left-0 w-full bg-emerald-50 dark:bg-emerald-900/10 transition-all duration-300 ease-out"
+            className="absolute bottom-0 left-0 w-full bg-amber-50 dark:bg-amber-900/10 transition-all duration-300 ease-out"
             style={{ height: `${progress}%` }}
           />
         )}
@@ -123,7 +123,7 @@ export function ZikrCounter() {
           {typeof target === 'number' && target > 0 && (
             <span className={cn(
               "text-lg font-medium",
-              isCompleted ? "text-emerald-100" : "text-gray-400"
+              isCompleted ? "text-amber-100" : "text-gray-400"
             )}>
               / {target}
             </span>
@@ -132,7 +132,7 @@ export function ZikrCounter() {
       </button>
 
       {isCompleted && (
-        <div className="text-center text-emerald-600 dark:text-emerald-400 font-bold animate-pulse">
+        <div className="text-center text-amber-600 dark:text-amber-400 font-bold animate-pulse">
           {t('TargetReached')}
         </div>
       )}

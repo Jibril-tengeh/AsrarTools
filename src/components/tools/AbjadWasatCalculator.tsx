@@ -2,39 +2,19 @@ import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RefreshCcw } from 'lucide-react';
 
-// Abjad Kabir standard table
-const abjadMap: Record<string, number> = {
+// Abjad Wasat table
+// Typically, Abjad Wasat reduces hundreds to tens and tens to units if they exceed certain bounds,
+// but one common Wasat system is (Kabir / 12) or specific mapped values.
+// We'll use a common variant where units remain, tens are divided by 10, hundreds by 100.
+// e.g. Y (10) -> 1, K (20) -> 2, Q (100) -> 1, R (200) -> 2, Gh (1000) -> 1
+const abjadWasatMap: Record<string, number> = {
   'ا': 1, 'أ': 1, 'إ': 1, 'آ': 1, 'ء': 1,
-  'ب': 2,
-  'ج': 3,
-  'د': 4,
-  'ه': 5, 'ة': 5,
-  'و': 6, 'ؤ': 6,
-  'ز': 7,
-  'ح': 8,
-  'ط': 9,
-  'ي': 10, 'ئ': 10, 'ى': 10,
-  'ك': 20,
-  'ل': 30,
-  'م': 40,
-  'ن': 50,
-  'س': 60,
-  'ع': 70,
-  'ف': 80,
-  'ص': 90,
-  'ق': 100,
-  'ر': 200,
-  'ش': 300,
-  'ت': 400,
-  'ث': 500,
-  'خ': 600,
-  'ذ': 700,
-  'ض': 800,
-  'ظ': 900,
-  'غ': 1000
+  'ب': 2, 'ج': 3, 'د': 4, 'ه': 5, 'ة': 5, 'و': 6, 'ؤ': 6, 'ز': 7, 'ح': 8, 'ط': 9,
+  'ي': 1, 'ئ': 1, 'ى': 1, 'ك': 2, 'ل': 3, 'م': 4, 'ن': 5, 'س': 6, 'ع': 7, 'ف': 8, 'ص': 9,
+  'ق': 1, 'ر': 2, 'ش': 3, 'ت': 4, 'ث': 5, 'خ': 6, 'ذ': 7, 'ض': 8, 'ظ': 9, 'غ': 10 // Ghayn is 1000, 1000/100 = 10 or 1
 };
 
-export function AbjadCalculator() {
+export function AbjadWasatCalculator() {
   const { t } = useTranslation();
   const [inputText, setInputText] = useState('');
 
@@ -42,15 +22,13 @@ export function AbjadCalculator() {
     let currentTotal = 0;
     const currentBreakdown: { char: string; value: number }[] = [];
 
-    // Filter to only Arabic letters (and handle spaces visually if needed, but we'll map only valid chars)
     for (const char of inputText) {
       if (char === ' ') continue;
-      const val = abjadMap[char];
-      if (val !== undefined) {
-        currentTotal += val;
-        currentBreakdown.push({ char, value: val });
+      const wasatVal = abjadWasatMap[char];
+      if (wasatVal !== undefined) {
+        currentTotal += wasatVal;
+        currentBreakdown.push({ char, value: wasatVal });
       } else {
-        // Unknown chars get 0 or skipped
         currentBreakdown.push({ char, value: 0 });
       }
     }
@@ -87,7 +65,7 @@ export function AbjadCalculator() {
       {/* Result Section */}
       <div className="flex flex-col items-center justify-center bg-amber-50 dark:bg-amber-900/20 py-8 rounded-xl border border-amber-200 dark:border-amber-800/50">
         <div className="text-sm text-amber-800 dark:text-amber-400 font-medium mb-2 uppercase tracking-wider">
-          {t('TotalAbjadValue')}
+          {t('TotalAbjadValue')} (Wasat)
         </div>
         <div className="text-6xl font-bold text-amber-600 dark:text-amber-400 font-mono tracking-tighter">
           {total}

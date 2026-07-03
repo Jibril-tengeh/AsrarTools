@@ -4,6 +4,7 @@ export const categories: ToolCategory[] = [
   { id: 'cat-abjad', nameKey: 'CatAbjad' },
   { id: 'cat-wafq', nameKey: 'CatWafq' },
   { id: 'cat-astrology', nameKey: 'CatAstrology' },
+  { id: 'cat-asma', nameKey: 'CatAsma' },
   { id: 'cat-rituals', nameKey: 'CatRituals' },
   { id: 'cat-geomancy', nameKey: 'CatGeomancy' },
 ];
@@ -19,15 +20,39 @@ export const mockTools: AsrarTool[] = [
     status: 'active',
   },
   {
+    id: 'abjad-advanced',
+    categoryId: 'cat-abjad',
+    nameKey: 'AbjadAdvancedName',
+    descriptionKey: 'AbjadAdvancedDesc',
+    iconName: 'Settings2',
+    status: 'active',
+  },
+  {
     id: 'abjad-saghir',
     categoryId: 'cat-abjad',
     nameKey: 'AbjadSaghirName',
     descriptionKey: 'AbjadSaghirDesc',
-    iconName: 'Hash',
+    iconName: 'Minimize2',
+    status: 'active',
+  },
+  {
+    id: 'abjad-wasat',
+    categoryId: 'cat-abjad',
+    nameKey: 'AbjadWasatName',
+    descriptionKey: 'AbjadWasatDesc',
+    iconName: 'Scale',
     status: 'active',
   },
   
   // Cat 2: Wafq
+  {
+    id: 'wafq-advanced',
+    categoryId: 'cat-wafq',
+    nameKey: 'WafqAdvancedName',
+    descriptionKey: 'WafqAdvancedDesc',
+    iconName: 'Blocks',
+    status: 'active',
+  },
   {
     id: 'wafq-muthallath',
     categoryId: 'cat-wafq',
@@ -42,10 +67,55 @@ export const mockTools: AsrarTool[] = [
     nameKey: 'Wafq4x4Name',
     descriptionKey: 'Wafq4x4Desc',
     iconName: 'LayoutGrid',
-    status: 'disabled', // Placeholder
+    status: 'active',
   },
 
-  // Cat 4: Rituals
+  // Cat 3: Astrologie & Éléments
+  {
+    id: 'astrology-planetary-hours',
+    categoryId: 'cat-astrology',
+    nameKey: 'PlanetaryHoursName',
+    descriptionKey: 'PlanetaryHoursDesc',
+    iconName: 'Compass',
+    status: 'active',
+  },
+  {
+    id: 'elemental-analyzer',
+    categoryId: 'cat-astrology',
+    nameKey: 'ElementalAnalyzerName',
+    descriptionKey: 'ElementalAnalyzerDesc',
+    iconName: 'Flame',
+    status: 'active',
+  },
+  
+  // Cat 4: Asma & Bast
+  {
+    id: 'asma-matcher',
+    categoryId: 'cat-asma',
+    nameKey: 'AsmaMatcherName',
+    descriptionKey: 'AsmaMatcherDesc',
+    iconName: 'BookOpen',
+    status: 'active',
+  },
+  {
+    id: 'bast-module',
+    categoryId: 'cat-asma',
+    nameKey: 'BastModuleName',
+    descriptionKey: 'BastModuleDesc',
+    iconName: 'AlignRight',
+    status: 'active',
+  },
+
+  {
+    id: 'geomancy-cast',
+    categoryId: 'cat-geomancy',
+    nameKey: 'GeomancyCastName',
+    descriptionKey: 'GeomancyCastDesc',
+    iconName: 'Hash',
+    status: 'disabled',
+  },
+
+  // Cat 5: Rituals
   {
     id: 'zikr-counter',
     categoryId: 'cat-rituals',
@@ -60,6 +130,6 @@ export const mockTools: AsrarTool[] = [
     nameKey: 'DhikrPlannerName',
     descriptionKey: 'DhikrPlannerDesc',
     iconName: 'Calendar',
-    status: 'disabled', // Placeholder
+    status: 'active',
   }
 ];

@@ -10,6 +10,17 @@ import { AbjadSaghirCalculator } from '../../components/tools/AbjadSaghirCalcula
 import { WafqGenerator } from '../../components/tools/WafqGenerator';
 import { ZikrCounter } from '../../components/tools/ZikrCounter';
 
+import { AbjadWasatCalculator } from '../../components/tools/AbjadWasatCalculator';
+import { Wafq4x4Generator } from '../../components/tools/Wafq4x4Generator';
+import { DhikrPlanner } from '../../components/tools/DhikrPlanner';
+
+import { AdvancedAbjadCalculator } from '../../components/tools/AdvancedAbjadCalculator';
+import { AdvancedWafqGenerator } from '../../components/tools/AdvancedWafqGenerator';
+import { PlanetaryHours } from '../../components/tools/PlanetaryHours';
+import { ElementalAnalyzer } from '../../components/tools/ElementalAnalyzer';
+import { AsmaMatcher } from '../../components/tools/AsmaMatcher';
+import { BastModule } from '../../components/tools/BastModule';
+
 export function ToolPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -21,7 +32,7 @@ export function ToolPage() {
     return (
       <div className="flex flex-col items-center justify-center p-12 text-center">
         <h2 className="text-2xl font-bold mb-4">{t('NotFoundTitle')}</h2>
-        <button onClick={() => navigate('/')} className="text-emerald-600 hover:underline">
+        <button onClick={() => navigate('/')} className="text-amber-600 hover:underline">
           {t('BackToDashboard')}
         </button>
       </div>
@@ -32,12 +43,30 @@ export function ToolPage() {
     switch (tool.id) {
       case 'abjad-kabir':
         return <AbjadCalculator />;
+      case 'abjad-advanced':
+        return <AdvancedAbjadCalculator />;
       case 'abjad-saghir':
         return <AbjadSaghirCalculator />;
       case 'wafq-muthallath':
         return <WafqGenerator />;
+      case 'wafq-advanced':
+        return <AdvancedWafqGenerator />;
+      case 'wafq-murabba':
+        return <Wafq4x4Generator />;
+      case 'astrology-planetary-hours':
+        return <PlanetaryHours />;
+      case 'elemental-analyzer':
+        return <ElementalAnalyzer />;
+      case 'asma-matcher':
+        return <AsmaMatcher />;
+      case 'bast-module':
+        return <BastModule />;
       case 'zikr-counter':
         return <ZikrCounter />;
+      case 'dhikr-planner':
+        return <DhikrPlanner />;
+      case 'abjad-wasat':
+        return <AbjadWasatCalculator />;
       default:
         return (
           <div className="flex flex-col items-center justify-center p-12 text-center bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
