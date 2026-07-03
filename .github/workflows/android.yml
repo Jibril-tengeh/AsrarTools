@@ -37,8 +37,8 @@ jobs:
     - name: Build APK
       run: |
         cd android
+        gradle wrapper --gradle-version 8.2.1
         chmod +x gradlew
-        curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.2.1/gradle/wrapper/gradle-wrapper.jar
         ./gradlew assembleDebug
 
     - name: Upload APK Artifact
