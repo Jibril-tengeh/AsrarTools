@@ -272,7 +272,11 @@ fs.writeFileSync('src/data/toolsData.ts', toolsDataContent);
 // Write to config.ts
 function buildTranslationBlock(lang, translations) {
   let entries = Object.entries(translations).map(([k, v]) => `      "${k}": ${JSON.stringify(v)}`).join(',\n');
-  return `  ${lang}: {\n    translation: {\n      "Welcome": "Bienvenue",\n      "WelcomeMessage": "Initialisé.",\n      "InstructionMessage": "Taper USER ou ADMIN",\n      "Profile": "Profil",\n      "DarkMode": "Mode Sombre",\n      "Language": "Langue",\n      "Tools": "Outils",\n      "Settings": "Paramètres",\n      "UserDashboardTitle": "Annuaire des Outils d'Asrar",\n      "SearchTools": "Rechercher un outil...",\n      "StatusActive": "Actif",\n      "StatusMaintenance": "En maintenance",\n      "StatusDisabled": "Premium / À venir",\n      "AccessTool": "Accéder",\n      "NotFoundTitle": "Outil non trouvé",\n      "BackToDashboard": "Retour au tableau de bord",\n      "InDevelopmentTitle": "Outil en cours de développement",\n      "InDevelopmentDesc": "L'outil {{name}} est actuellement en cours de finalisation.",\n${entries}\n    }\n  }`;
+  return `  ${lang}: {\n    translation: {\n      "Welcome": "Bienvenue",\n      "WelcomeMessage": "Initialisé.",\n      "InstructionMessage": "Taper USER ou ADMIN",\n      "Profile": "Profil",\n      "DarkMode": "Mode Sombre",\n      "Language": "Langue",\n      "Tools": "Outils",\n      "Settings": "Paramètres",\n      "UserDashboardTitle": "Annuaire des Outils d'Asrar",\n      "SearchTools": "Rechercher un outil...",\n      "StatusActive": "Actif",\n      "StatusMaintenance": "En maintenance",\n      "StatusDisabled": "Premium / À venir",\n      "AccessTool": "Accéder",\n      "NotFoundTitle": "Outil non trouvé",\n      "BackToDashboard": "Retour au tableau de bord",\n      "InDevelopmentTitle": "Outil en cours de développement",\n      "InDevelopmentDesc": "L'outil {{name}} est actuellement en cours de finalisation.",
+      "ArabicText": "Texte Arabe",
+      "Clear": "Effacer",
+      "TotalAbjadValue": "Valeur Numérique Totale",
+      "DetailedAnalysis": "Analyse Détaillée",\n${entries}\n    }\n  }`;
 }
 
 const fullConfig = `import i18n from 'i18next';

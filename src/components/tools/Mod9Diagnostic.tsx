@@ -1,142 +1,128 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Activity, User, Users, RefreshCw } from 'lucide-react';
-
-const abjadStandard: Record<string, number> = {
-  'ا': 1, 'ب': 2, 'ج': 3, 'د': 4, 'ه': 5, 'و': 6, 'ز': 7, 'ح': 8, 'ط': 9,
-  'ي': 10, 'ك': 20, 'ل': 30, 'م': 40, 'ن': 50, 'س': 60, 'ع': 70, 'ف': 80, 'ص': 90,
-  'ق': 100, 'ر': 200, 'ش': 300, 'ت': 400, 'ث': 500, 'خ': 600, 'ذ': 700, 'ض': 800, 'ظ': 900, 'غ': 1000,
-  'أ': 1, 'إ': 1, 'آ': 1, 'ء': 1, 'ؤ': 6, 'ئ': 10, 'ى': 10, 'ة': 5
-};
-
-function calculateAbjad(text: string): number {
-  let sum = 0;
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    if (abjadStandard[char]) {
-      sum += abjadStandard[char];
-    }
-  }
-  return sum;
-}
-
-const mod9Interpretations = [
-  { mod: 1, title: "L'Unité et la Tête", desc: "Le blocage se situe au niveau de la tête, du mental ou de l'égo. Un besoin de lâcher-prise et de connexion spirituelle." },
-  { mod: 2, title: "La Dualité et la Poitrine", desc: "Tensions émotionnelles ou relationnelles. Le cœur ou les poumons peuvent être affectés spirituellement." },
-  { mod: 3, title: "Le Dynamisme et l'Estomac", desc: "Problème d'assimilation (idées ou nourriture). Anxiété liée au contrôle." },
-  { mod: 4, title: "La Stabilité et les Reins", desc: "Peur enracinée ou manque de sécurité financière/matérielle." },
-  { mod: 5, title: "Le Mouvement et le Sang", desc: "Circulation bloquée des énergies. Impatience ou colère refoulée." },
-  { mod: 6, title: "L'Harmonie et le Bas-ventre", desc: "Déséquilibre dans les relations intimes ou créativité bloquée." },
-  { mod: 7, title: "Le Secret et les Jambes", desc: "Hésitation à avancer dans la vie. Influences extérieures cachées ou 'Ayn (mauvais œil)." },
-  { mod: 8, title: "La Justice et le Dos", desc: "Porte un fardeau trop lourd. Dettes karmiques ou fardeau familial." },
-  { mod: 9, title: "La Complétude et l'Aura", desc: "Le cycle est complet mais l'énergie est dispersée. Fuite aurique, besoin de recentrage ou de roqya globale." }, // Note: Modulo 9 of X is 0, but traditionally we use 9 when remainder is 0.
-];
+import { RefreshCcw, Shield, CheckCircle2, AlertTriangle, Info } from 'lucide-react';
+import { abjadKabirMap } from '../../lib/abjad';
 
 export function Mod9Diagnostic() {
   const { t } = useTranslation();
-  const [name, setName] = useState('');
+  const [personName, setPersonName] = useState('');
   const [motherName, setMotherName] = useState('');
 
-  const calculateDiagnostic = () => {
-    if (!name || !motherName) return null;
-    const nameVal = calculateAbjad(name);
-    const motherVal = calculateAbjad(motherName);
-    const total = nameVal + motherVal;
-    
-    let remainder = total % 9;
-    if (remainder === 0) remainder = 9;
-
-    return {
-      nameVal,
-      motherVal,
-      total,
-      remainder,
-      interpretation: mod9Interpretations.find(i => i.mod === remainder)
-    };
+  const calculateAdadi = (text: string) => {
+    let total = 0;
+    for (const char of text) {
+      if (abjadKabirMap[char]) {
+        total += abjadKabirMap[char];
+      }
+    }
+    return total;
   };
 
-  const result = calculateDiagnostic();
+  const getDiagnostic = () => {
+    if (!personName || !motherName) return null;
+
+    const val1 = calculateAdadi(personName);
+    const val2 = calculateAdadi(motherName);
+    const sum = val1 + val2;
+    const mod = sum % 9 || 9; // If 0, it means 9
+
+    // Traditional Mod 9 diagnostic interpretations (example mapping)
+    const interpretations: Record<number, { title: string, desc: string, type: 'good' | 'warning' | 'neutral' }> = {
+      1: { title: 'Déséquilibre Spirituel', desc: 'Indique une possible affection spirituelle nécessitant une purification.', type: 'warning' },
+      2: { title: 'Harmonie Naturelle', desc: 'État spirituel stable, aucune influence externe majeure détectée.', type: 'good' },
+      3: { title: 'Blocage Énergétique', desc: 'Présence de nœuds énergétiques affectant la vitalité.', type: 'warning' },
+      4: { title: 'Protection Forte', desc: 'Bonne protection naturelle, barrières spirituelles intactes.', type: 'good' },
+      5: { title: 'Influence Temporelle', desc: 'Perturbations liées aux cycles lunaires ou planétaires.', type: 'neutral' },
+      6: { title: 'Équilibre Parfait', desc: 'Excellente constitution spirituelle et mentale.', type: 'good' },
+      7: { title: 'Vulnérabilité Émotionnelle', desc: 'Sensibilité accrue aux énergies environnantes.', type: 'neutral' },
+      8: { title: 'Interférence Externe', desc: 'Possibilité d\'énergies intrusives (Ayn, Hasad).', type: 'warning' },
+      9: { title: 'Renouvellement Nécessaire', desc: 'Fin de cycle, besoin de se recentrer spirituellement.', type: 'neutral' }
+    };
+
+    return { val1, val2, sum, mod, interpretation: interpretations[mod] };
+  };
+
+  const result = getDiagnostic();
 
   return (
-    <div className="max-w-3xl mx-auto flex flex-col gap-6">
-      <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-amber-100 dark:border-amber-900/30 shadow-sm">
-        <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100 dark:border-gray-800">
-          <div className="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-xl text-amber-600 dark:text-amber-400">
-            <Activity className="w-6 h-6" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Diagnostic Reste 9 (Ism al-Umm)</h2>
-            <p className="text-sm text-gray-500">Calcule la nature d'un blocage par la méthode traditionnelle du modulo 9.</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Prénom (en Arabe)
-            </label>
-            <div className="relative">
-              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                dir="rtl"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-amber-500 font-arabic text-lg"
-                placeholder="Ex: محمد"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Prénom de la Mère (en Arabe)
-            </label>
-            <div className="relative">
-              <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                dir="rtl"
-                value={motherName}
-                onChange={(e) => setMotherName(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-amber-500 font-arabic text-lg"
-                placeholder="Ex: فاطمة"
-              />
-            </div>
-          </div>
-        </div>
-
-        {result && (
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-gray-800 dark:to-gray-800 rounded-xl p-6 border border-amber-200/50 dark:border-amber-700/30">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 text-center">Résultat du Diagnostic</h3>
-            
-            <div className="grid grid-cols-3 gap-4 mb-6 text-center">
-              <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
-                <div className="text-sm text-gray-500">Sujet</div>
-                <div className="text-2xl font-bold text-amber-600">{result.nameVal}</div>
-              </div>
-              <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm">
-                <div className="text-sm text-gray-500">Mère</div>
-                <div className="text-2xl font-bold text-amber-600">{result.motherVal}</div>
-              </div>
-              <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-sm border-2 border-amber-200 dark:border-amber-800">
-                <div className="text-sm font-bold text-amber-800 dark:text-amber-400">Reste (Mod 9)</div>
-                <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">{result.remainder}</div>
-              </div>
-            </div>
-
-            {result.interpretation && (
-              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl shadow-sm">
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {result.interpretation.title}
-                </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {result.interpretation.desc}
-                </p>
-              </div>
-            )}
-          </div>
-        )}
+    <div className="flex flex-col gap-8 bg-white dark:bg-gray-950 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 max-w-xl mx-auto w-full">
+      <div className="flex justify-between items-center border-b border-gray-100 dark:border-gray-900 pb-4">
+         <h2 className="text-lg font-bold flex items-center gap-2 text-rose-700 dark:text-rose-500">
+            <Shield className="w-5 h-5" />
+            {t('Mod9Diagnostic')}
+         </h2>
+         <button 
+           onClick={() => { setPersonName(''); setMotherName(''); }}
+           className="p-2 text-gray-400 hover:text-rose-600 rounded-full transition-colors"
+         >
+           <RefreshCcw className="w-5 h-5" />
+         </button>
       </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+           <label className="text-sm font-semibold">{t('PersonName')}</label>
+           <input 
+             dir="rtl"
+             type="text" 
+             value={personName} 
+             onChange={e => setPersonName(e.target.value)} 
+             className="p-3 border rounded-xl dark:bg-gray-900 dark:border-gray-800 focus:ring-2 focus:ring-rose-500 outline-none text-xl" 
+           />
+        </div>
+        <div className="flex flex-col gap-2">
+           <label className="text-sm font-semibold">{t('MotherName')}</label>
+           <input 
+             dir="rtl"
+             type="text" 
+             value={motherName} 
+             onChange={e => setMotherName(e.target.value)} 
+             className="p-3 border rounded-xl dark:bg-gray-900 dark:border-gray-800 focus:ring-2 focus:ring-rose-500 outline-none text-xl" 
+           />
+        </div>
+      </div>
+
+      {result && (
+        <div className="mt-4 flex flex-col gap-4">
+          <div className="grid grid-cols-3 gap-2 text-center">
+             <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg border border-gray-100 dark:border-gray-800">
+               <div className="text-xs text-gray-500 uppercase">{t('PersonValue')}</div>
+               <div className="font-bold text-xl">{result.val1}</div>
+             </div>
+             <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg border border-gray-100 dark:border-gray-800">
+               <div className="text-xs text-gray-500 uppercase">{t('MotherValue')}</div>
+               <div className="font-bold text-xl">{result.val2}</div>
+             </div>
+             <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg border border-gray-100 dark:border-gray-800">
+               <div className="text-xs text-gray-500 uppercase">{t('TotalSum')}</div>
+               <div className="font-bold text-xl">{result.sum}</div>
+             </div>
+          </div>
+
+          <div className={`p-6 rounded-xl border ${
+            result.interpretation.type === 'good' ? 'bg-emerald-50 border-emerald-200 dark:bg-emerald-900/20 dark:border-emerald-800/50' :
+            result.interpretation.type === 'warning' ? 'bg-rose-50 border-rose-200 dark:bg-rose-900/20 dark:border-rose-800/50' :
+            'bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800/50'
+          }`}>
+             <div className="flex items-center gap-3 mb-4">
+                <div className={`w-12 h-12 flex items-center justify-center rounded-full text-2xl font-black ${
+                  result.interpretation.type === 'good' ? 'bg-emerald-200 text-emerald-800' :
+                  result.interpretation.type === 'warning' ? 'bg-rose-200 text-rose-800' :
+                  'bg-blue-200 text-blue-800'
+                }`}>
+                  {result.mod}
+                </div>
+                <div>
+                   <div className="text-xs font-bold uppercase opacity-60">Résultat Modulo 9</div>
+                   <h3 className="font-bold text-lg">{result.interpretation.title}</h3>
+                </div>
+             </div>
+             <p className="opacity-90 leading-relaxed">
+               {result.interpretation.desc}
+             </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
