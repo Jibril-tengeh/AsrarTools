@@ -20,6 +20,7 @@ import { PlanetaryHours } from '../../components/tools/PlanetaryHours';
 import { ElementalAnalyzer } from '../../components/tools/ElementalAnalyzer';
 import { AsmaMatcher } from '../../components/tools/AsmaMatcher';
 import { BastModule } from '../../components/tools/BastModule';
+import { Mod9Diagnostic } from '../../components/tools/Mod9Diagnostic';
 
 export function ToolPage() {
   const { id } = useParams<{ id: string }>();
@@ -67,6 +68,8 @@ export function ToolPage() {
         return <DhikrPlanner />;
       case 'abjad-wasat':
         return <AbjadWasatCalculator />;
+      case 'diag-mod9':
+        return <Mod9Diagnostic />;
       default:
         return (
           <div className="flex flex-col items-center justify-center p-12 text-center bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">

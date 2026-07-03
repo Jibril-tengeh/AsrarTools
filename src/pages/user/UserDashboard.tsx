@@ -1,27 +1,16 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, Grid3x3, Hash, Calculator, ChevronRight, BookOpen, LayoutGrid, Activity, Calendar, Compass, Flame, AlignRight, Settings2, Minimize2, Scale, Blocks, ArrowLeft } from 'lucide-react';
+import * as Icons from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { categories, mockTools } from '../../data/toolsData';
 import { AsrarTool, ToolCategory } from '../../types';
 import { cn } from '../../lib/utils';
 import { DashboardHeaderWidget } from '../../components/tools/DashboardHeaderWidget';
 
-const iconMap: Record<string, React.ElementType> = {
-  Grid3x3,
-  Hash,
-  Calculator,
-  BookOpen,
-  LayoutGrid,
-  Activity,
-  Calendar,
-  Compass,
-  Flame,
-  AlignRight,
-  Settings2,
-  Minimize2,
-  Scale,
-  Blocks
+// Map string icon names to Lucide components dynamically
+const getIcon = (iconName: string): React.ElementType => {
+  const Icon = (Icons as any)[iconName];
+  return Icon || Icons.Box; // Fallback to Box if icon not found
 };
 
 export function UserDashboard() {
@@ -57,7 +46,7 @@ export function UserDashboard() {
               className="p-2 -ml-2 text-gray-500 hover:text-amber-600 transition-colors"
               title="Retour aux catégories"
             >
-              <ArrowLeft className="w-6 h-6" />
+              <Icons.ArrowLeft className="w-6 h-6" />
             </button>
           )}
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -68,7 +57,7 @@ export function UserDashboard() {
         </div>
         
         <div className="relative w-full md:w-72">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Icons.Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
             type="text"
             placeholder={t('SearchTools')}
@@ -127,9 +116,9 @@ export function UserDashboard() {
   );
 }
 
-function CategoryCard({ category, onClick, toolsCount }: { category: ToolCategory; onClick: () => void; toolsCount: number }) {
+function CategoryCard({ category, onClick, toolsCount }: { key?: string | number; category: ToolCategory; onClick: () => void; toolsCount: number }) {
   const { t } = useTranslation();
-  const Icon = iconMap[category.iconName] || BookOpen;
+  const Icon = getIcon(category.iconName);
 
   return (
     <div 
@@ -159,17 +148,17 @@ function CategoryCard({ category, onClick, toolsCount }: { category: ToolCategor
 
         {/* Chevron */}
         <div className="shrink-0 w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-amber-500 group-hover:translate-x-1 group-hover:bg-amber-50 dark:group-hover:bg-amber-900/30 transition-all duration-300">
-          <ChevronRight className="w-5 h-5" />
+          <Icons.ChevronRight className="w-5 h-5" />
         </div>
       </div>
     </div>
   );
 }
 
-function ToolCard({ tool }: { tool: AsrarTool }) {
+function ToolCard({ tool }: { key?: string | number; tool: AsrarTool }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const Icon = iconMap[tool.iconName] || BookOpen;
+  const Icon = getIcon(tool.iconName);
   
   const isActive = tool.status === 'active';
 
@@ -226,7 +215,7 @@ function ToolCard({ tool }: { tool: AsrarTool }) {
               : "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-400 cursor-not-allowed"
           )}
         >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.5]" />
+          <Icons.ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.5]" />
         </button>
       </div>
     </div>
